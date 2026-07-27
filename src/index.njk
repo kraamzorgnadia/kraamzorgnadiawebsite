@@ -134,7 +134,7 @@ layout: base.njk
       </div>
       <div class="form-row">
         <label for="uitgerekende-datum">Uitgerekende datum (optioneel)</label>
-        <input type="date" id="uitgerekende-datum" name="uitgerekende-datum">
+        <input type="text" id="uitgerekende-datum" name="uitgerekende-datum" placeholder="dd-mm-jjjj" pattern="[0-3]?[0-9]-[0-1]?[0-9]-[0-9]{4}" inputmode="numeric" autocomplete="off">
       </div>
       <div class="form-row">
         <label for="bericht">Bericht</label>
