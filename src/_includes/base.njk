@@ -3,9 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ settings.site.naam_deel1 }} {{ settings.site.naam_deel2 }} — Liefdevolle kraamzorg</title>
-<meta name="description" content="{{ settings.site.naam_deel1 }} {{ settings.site.naam_deel2 }} biedt persoonlijke en professionele kraamzorg voor jou en je gezin.">
+{% set page_title = settings.site.naam_deel1 + " " + settings.site.naam_deel2 + " — Liefdevolle kraamzorg" %}
+{% set page_description = settings.site.naam_deel1 + " " + settings.site.naam_deel2 + " biedt persoonlijke en professionele kraamzorg voor jou en je gezin." %}
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_description }}">
+<link rel="canonical" href="{{ meta.url }}/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ settings.site.logo_emoji }}</text></svg>">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="{{ settings.site.naam_deel1 }} {{ settings.site.naam_deel2 }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_description }}">
+<meta property="og:url" content="{{ meta.url }}/">
+{% if settings.hero.foto %}<meta property="og:image" content="{{ meta.url }}{{ settings.hero.foto }}">{% endif %}
+<meta name="twitter:card" content="{% if settings.hero.foto %}summary_large_image{% else %}summary{% endif %}">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": {{ (settings.site.naam_deel1 + " " + settings.site.naam_deel2) | dump | safe }},
+  "description": {{ settings.hero.lead | dump | safe }},
+  "url": {{ (meta.url + "/") | dump | safe }},
+  "email": {{ settings.contact.email | dump | safe }},
+  "telephone": {{ settings.contact.telefoon | dump | safe }},
+  "areaServed": {{ settings.praktisch.werkgebied | dump | safe }}
+  {% if settings.hero.foto %},"image": {{ (meta.url + settings.hero.foto) | dump | safe }}{% endif %}
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
