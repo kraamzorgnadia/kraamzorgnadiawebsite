@@ -32,6 +32,7 @@ collections:
               - { label: "Introductietekst", name: "lead", widget: "text" }
               - { label: "Knoptekst (primair)", name: "cta_primary_label", widget: "string" }
               - { label: "Knoptekst (secundair)", name: "cta_secondary_label", widget: "string" }
+              - { label: "Foto", name: "foto", widget: "image", required: false }
 
           - label: "Over mij"
             name: "over_mij"
@@ -45,6 +46,7 @@ collections:
                 name: "badges"
                 widget: "list"
                 field: { label: "Kenmerk", name: "badge", widget: "string" }
+              - { label: "Foto", name: "foto", widget: "image", required: false }
 
           - label: "Diensten (intro)"
             name: "diensten_intro"

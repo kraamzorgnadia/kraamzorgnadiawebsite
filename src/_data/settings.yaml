@@ -8,10 +8,12 @@ hero:
   lead: Ik begeleid jou, je partner en je baby met warme, deskundige kraamzorg —
     zodat jullie vol vertrouwen aan het gezinsleven kunnen beginnen.
   cta_primary_label: Plan een kennismaking
-  cta_secondary_label: Bekijk mijn diensten
+  cta_secondary_label: Bekijk wat ik voor jullie doe
+  foto: ""
 over_mij:
   eyebrow: Over mij
   heading: Fijn dat je hier bent
+  foto: ""
   paragraaf_1: Mijn naam is Nadia en ik ben gediplomeerd kraamverzorgende met [X]
     jaar ervaring. Ik geloof dat de kraamweek een bijzondere, kwetsbare tijd is
     — en dat elk gezin daarin zijn eigen rust en ritme verdient.
@@ -22,7 +24,7 @@ over_mij:
     - Gecertificeerd in [certificering]
     - Werkzaam in [werkgebied]
 diensten_intro:
-  eyebrow: Diensten
+  eyebrow: De kraamweek
   heading: Waar ik jullie mee help
 werkwijze:
   eyebrow: Werkwijze

@@ -200,6 +200,19 @@ a { color: var(--color-accent-dark); text-decoration: none; }
 }
 .hero-photo { aspect-ratio: 1 / 1; }
 
+.photo-placeholder.has-photo {
+  border-style: solid;
+  border-color: transparent;
+  padding: 0;
+  overflow: hidden;
+}
+.photo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
 /* Sections */
 .section { padding: 5rem 1.5rem; }
 .section-tinted { background: var(--color-bg-tint); }

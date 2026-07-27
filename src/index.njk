@@ -12,8 +12,12 @@ layout: base.njk
     </div>
   </div>
   <div class="hero-visual" aria-hidden="true">
-    <div class="photo-placeholder hero-photo">
+    <div class="photo-placeholder hero-photo{% if settings.hero.foto %} has-photo{% endif %}">
+      {% if settings.hero.foto %}
+      <img src="{{ settings.hero.foto }}" alt="">
+      {% else %}
       <span>Foto van {{ settings.site.naam_deel2 }}</span>
+      {% endif %}
     </div>
     <div class="hero-blob"></div>
   </div>
@@ -21,8 +25,12 @@ layout: base.njk
 
 <section class="section" id="over-mij">
   <div class="section-inner reverse">
-    <div class="photo-placeholder">
+    <div class="photo-placeholder{% if settings.over_mij.foto %} has-photo{% endif %}">
+      {% if settings.over_mij.foto %}
+      <img src="{{ settings.over_mij.foto }}" alt="Portretfoto van {{ settings.site.naam_deel2 }}">
+      {% else %}
       <span>Portretfoto</span>
+      {% endif %}
     </div>
     <div class="section-text">
       <p class="eyebrow">{{ settings.over_mij.eyebrow }}</p>
