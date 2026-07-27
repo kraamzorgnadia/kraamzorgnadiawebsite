@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: sjedde/kraamzorgtest
+  name: git-gateway
   branch: main
 
 media_folder: "src/images/uploads"
