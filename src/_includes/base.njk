@@ -33,6 +33,31 @@
 }
 </script>
 
+{% set bedrijfsnaam = settings.site.naam_deel1 + " " + settings.site.naam_deel2 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": {{ ("In welk gebied is " + bedrijfsnaam + " werkzaam?") | dump | safe }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ settings.praktisch.werkgebied | dump | safe }} }
+    },
+    {
+      "@type": "Question",
+      "name": "Wordt kraamzorg vergoed?",
+      "acceptedAnswer": { "@type": "Answer", "text": {{ settings.praktisch.vergoeding | dump | safe }} }
+    },
+    {
+      "@type": "Question",
+      "name": {{ ("Hoe ver van tevoren moet ik " + bedrijfsnaam + " boeken?") | dump | safe }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ settings.praktisch.beschikbaarheid | dump | safe }} }
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
