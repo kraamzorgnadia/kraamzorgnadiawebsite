@@ -267,7 +267,16 @@ a { color: var(--color-accent-dark); text-decoration: none; }
   padding: 2rem 1.7rem;
   box-shadow: 0 10px 30px rgba(58, 50, 44, 0.06);
 }
-.card-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
 .card p { margin-bottom: 0; font-size: 0.95rem; }
 
 .review-card {
