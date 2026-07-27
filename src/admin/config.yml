@@ -1,8 +1,7 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: sjedde/kraamzorgtest
   branch: main
-
-local_backend: true
 
 media_folder: "src/images/uploads"
 public_folder: "/images/uploads"
