@@ -1,0 +1,143 @@
+---
+layout: base.njk
+---
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">{{ settings.hero.eyebrow }}</p>
+    <h1>{{ settings.hero.heading }}</h1>
+    <p class="hero-lead">{{ settings.hero.lead }}</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">{{ settings.hero.cta_primary_label }}</a>
+      <a href="#diensten" class="btn btn-ghost">{{ settings.hero.cta_secondary_label }}</a>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="photo-placeholder hero-photo">
+      <span>Foto van {{ settings.site.naam_deel2 }}</span>
+    </div>
+    <div class="hero-blob"></div>
+  </div>
+</section>
+
+<section class="section" id="over-mij">
+  <div class="section-inner reverse">
+    <div class="photo-placeholder">
+      <span>Portretfoto</span>
+    </div>
+    <div class="section-text">
+      <p class="eyebrow">{{ settings.over_mij.eyebrow }}</p>
+      <h2>{{ settings.over_mij.heading }}</h2>
+      <p>{{ settings.over_mij.paragraaf_1 }}</p>
+      <p>{{ settings.over_mij.paragraaf_2 }}</p>
+      <ul class="badge-list">
+        {% for badge in settings.over_mij.badges %}
+        <li>{{ badge }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tinted" id="diensten">
+  <div class="section-inner column">
+    <p class="eyebrow center">{{ settings.diensten_intro.eyebrow }}</p>
+    <h2 class="center">{{ settings.diensten_intro.heading }}</h2>
+    <div class="cards">
+      {% for dienst in collections.diensten %}
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">{{ dienst.data.icon }}</div>
+        <h3>{{ dienst.data.title }}</h3>
+        <p>{{ dienst.data.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="werkwijze">
+  <div class="section-inner column">
+    <p class="eyebrow center">{{ settings.werkwijze.eyebrow }}</p>
+    <h2 class="center">{{ settings.werkwijze.heading }}</h2>
+    <ol class="timeline">
+      {% for stap in settings.werkwijze.stappen %}
+      <li>
+        <span class="timeline-index">{{ loop.index }}</span>
+        <div>
+          <h3>{{ stap.titel }}</h3>
+          <p>{{ stap.tekst }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section section-tinted" id="reviews">
+  <div class="section-inner column">
+    <p class="eyebrow center">{{ settings.reviews_intro.eyebrow }}</p>
+    <h2 class="center">{{ settings.reviews_intro.heading }}</h2>
+    <div class="cards">
+      {% for review in collections.reviews %}
+      <blockquote class="review-card">
+        <p>"{{ review.data.quote }}"</p>
+        <footer>— {{ review.data.author }}</footer>
+      </blockquote>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="praktisch">
+  <div class="section-inner column">
+    <p class="eyebrow center">{{ settings.praktisch.eyebrow }}</p>
+    <h2 class="center">{{ settings.praktisch.heading }}</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Werkgebied</h3>
+        <p>{{ settings.praktisch.werkgebied }}</p>
+      </div>
+      <div class="info-card">
+        <h3>Vergoeding</h3>
+        <p>{{ settings.praktisch.vergoeding }}</p>
+      </div>
+      <div class="info-card">
+        <h3>Beschikbaarheid</h3>
+        <p>{{ settings.praktisch.beschikbaarheid }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tinted" id="contact">
+  <div class="section-inner column">
+    <p class="eyebrow center">{{ settings.contact.eyebrow }}</p>
+    <h2 class="center">{{ settings.contact.heading }}</h2>
+    <p class="center contact-lead">{{ settings.contact.lead }}</p>
+
+    <form class="contact-form" name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact">
+      <div class="form-row">
+        <label for="naam">Naam</label>
+        <input type="text" id="naam" name="naam" required>
+      </div>
+      <div class="form-row">
+        <label for="email">E-mailadres</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-row">
+        <label for="uitgerekende-datum">Uitgerekende datum (optioneel)</label>
+        <input type="date" id="uitgerekende-datum" name="uitgerekende-datum">
+      </div>
+      <div class="form-row">
+        <label for="bericht">Bericht</label>
+        <textarea id="bericht" name="bericht" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Versturen</button>
+    </form>
+
+    <div class="contact-alt">
+      <p>Of neem direct contact op:</p>
+      <p><a href="mailto:{{ settings.contact.email }}">{{ settings.contact.email }}</a> · <a href="tel:{{ settings.contact.telefoon }}">{{ settings.contact.telefoon }}</a></p>
+    </div>
+  </div>
+</section>

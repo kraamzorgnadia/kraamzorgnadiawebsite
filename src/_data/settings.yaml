@@ -1,0 +1,61 @@
+site:
+  naam_deel1: Kraamzorg
+  naam_deel2: Nadia
+  logo_emoji: 🌿
+hero:
+  eyebrow: Kraamzorg in [regio]
+  heading: Liefdevolle zorg voor jullie eerste week samen
+  lead: Ik begeleid jou, je partner en je baby met warme, deskundige kraamzorg —
+    zodat jullie vol vertrouwen aan het gezinsleven kunnen beginnen.
+  cta_primary_label: Plan een kennismaking
+  cta_secondary_label: Bekijk mijn diensten
+over_mij:
+  eyebrow: Over mij
+  heading: Fijn dat je hier bent
+  paragraaf_1: Mijn naam is Nadia en ik ben gediplomeerd kraamverzorgende met [X]
+    jaar ervaring. Ik geloof dat de kraamweek een bijzondere, kwetsbare tijd is
+    — en dat elk gezin daarin zijn eigen rust en ritme verdient.
+  paragraaf_2: "Met aandacht, geduld en vakkennis help ik jullie op weg: van de
+    zorg voor je baby tot een luisterend oor voor jou als kersverse ouder."
+  badges:
+    - Gediplomeerd kraamverzorgende
+    - Gecertificeerd in [certificering]
+    - Werkzaam in [werkgebied]
+diensten_intro:
+  eyebrow: Diensten
+  heading: Waar ik jullie mee help
+werkwijze:
+  eyebrow: Werkwijze
+  heading: Hoe een traject eruitziet
+  stappen:
+    - titel: Kennismaking
+      tekst: We plannen een intakegesprek, meestal tijdens de zwangerschap, om elkaar
+        en jullie wensen te leren kennen.
+    - titel: De bevalling
+      tekst: Zodra de bevalling begint, sta ik klaar om zo snel mogelijk bij jullie te
+        zijn.
+    - titel: De kraamweek
+      tekst: Dagelijkse zorg en begeleiding voor jou en je baby, op de momenten die
+        jullie nodig hebben.
+    - titel: Nazorg
+      tekst: Ook na afloop van de kraamweek blijf ik bereikbaar voor vragen.
+reviews_intro:
+  eyebrow: Reviews
+  heading: Wat gezinnen zeggen
+praktisch:
+  eyebrow: Praktisch
+  heading: Goed om te weten
+  werkgebied: "[Regio / plaatsnamen invullen]"
+  vergoeding: Kraamzorg wordt (deels) vergoed vanuit je basisverzekering. Neem
+    contact met me op voor de mogelijkheden.
+  beschikbaarheid: Boek tijdig, vooral rond je uitgerekende datum — neem gerust
+    vroeg in de zwangerschap al contact op.
+contact:
+  eyebrow: Contact
+  heading: Laten we kennismaken
+  lead: Vul het formulier in of neem rechtstreeks contact op — ik reageer zo snel
+    mogelijk.
+  email: info@kraamzorgnadia.nl
+  telefoon: 06 - 00 00 00 00
+footer:
+  tekst: Alle rechten voorbehouden

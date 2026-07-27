@@ -1,0 +1,119 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "instellingen"
+    label: "Website-instellingen"
+    files:
+      - file: "src/_data/settings.yaml"
+        name: "settings"
+        label: "Alle teksten"
+        fields:
+          - label: "Bedrijfsnaam"
+            name: "site"
+            widget: "object"
+            fields:
+              - { label: "Naam (deel 1)", name: "naam_deel1", widget: "string" }
+              - { label: "Naam (deel 2, cursief)", name: "naam_deel2", widget: "string" }
+              - { label: "Logo-icoon (emoji)", name: "logo_emoji", widget: "string" }
+
+          - label: "Hero (bovenaan de site)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Kicker-tekst", name: "eyebrow", widget: "string" }
+              - { label: "Titel", name: "heading", widget: "string" }
+              - { label: "Introductietekst", name: "lead", widget: "text" }
+              - { label: "Knoptekst (primair)", name: "cta_primary_label", widget: "string" }
+              - { label: "Knoptekst (secundair)", name: "cta_secondary_label", widget: "string" }
+
+          - label: "Over mij"
+            name: "over_mij"
+            widget: "object"
+            fields:
+              - { label: "Kicker-tekst", name: "eyebrow", widget: "string" }
+              - { label: "Titel", name: "heading", widget: "string" }
+              - { label: "Alinea 1", name: "paragraaf_1", widget: "text" }
+              - { label: "Alinea 2", name: "paragraaf_2", widget: "text" }
+              - label: "Kenmerken (vinklijst)"
+                name: "badges"
+                widget: "list"
+                field: { label: "Kenmerk", name: "badge", widget: "string" }
+
+          - label: "Diensten (intro)"
+            name: "diensten_intro"
+            widget: "object"
+            fields:
+              - { label: "Kicker-tekst", name: "eyebrow", widget: "string" }
+              - { label: "Titel", name: "heading", widget: "string" }
+
+          - label: "Werkwijze"
+            name: "werkwijze"
+            widget: "object"
+            fields:
+              - { label: "Kicker-tekst", name: "eyebrow", widget: "string" }
+              - { label: "Titel", name: "heading", widget: "string" }
+              - label: "Stappen"
+                name: "stappen"
+                widget: "list"
+                fields:
+                  - { label: "Staptitel", name: "titel", widget: "string" }
+                  - { label: "Stapomschrijving", name: "tekst", widget: "text" }
+
+          - label: "Reviews (intro)"
+            name: "reviews_intro"
+            widget: "object"
+            fields:
+              - { label: "Kicker-tekst", name: "eyebrow", widget: "string" }
+              - { label: "Titel", name: "heading", widget: "string" }
+
+          - label: "Praktisch"
+            name: "praktisch"
+            widget: "object"
+            fields:
+              - { label: "Kicker-tekst", name: "eyebrow", widget: "string" }
+              - { label: "Titel", name: "heading", widget: "string" }
+              - { label: "Werkgebied", name: "werkgebied", widget: "text" }
+              - { label: "Vergoeding", name: "vergoeding", widget: "text" }
+              - { label: "Beschikbaarheid", name: "beschikbaarheid", widget: "text" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Kicker-tekst", name: "eyebrow", widget: "string" }
+              - { label: "Titel", name: "heading", widget: "string" }
+              - { label: "Introductietekst", name: "lead", widget: "text" }
+              - { label: "E-mailadres", name: "email", widget: "string" }
+              - { label: "Telefoonnummer", name: "telefoon", widget: "string" }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Tekst naast copyright", name: "tekst", widget: "string" }
+
+  - name: "diensten"
+    label: "Diensten"
+    folder: "src/diensten"
+    create: true
+    identifier_field: "title"
+    fields:
+      - { label: "Naam van de dienst", name: "title", widget: "string" }
+      - { label: "Icoon (emoji)", name: "icon", widget: "string" }
+      - { label: "Omschrijving", name: "description", widget: "text" }
+
+  - name: "reviews"
+    label: "Reviews"
+    folder: "src/reviews"
+    create: true
+    identifier_field: "author"
+    fields:
+      - { label: "Quote", name: "quote", widget: "text" }
+      - { label: "Naam / plaats", name: "author", widget: "string" }
