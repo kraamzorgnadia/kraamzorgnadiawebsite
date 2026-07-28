@@ -152,17 +152,16 @@ Nadia heeft `sjedde` als collaborator toegevoegd op `kraamzorgnadia/kraamzorgnad
 
 **Nadia's repo staat nu op de volledige projectgeschiedenis (alle commits t/m `a7ec8fc`).** Dit is stap 3-4 uit de lijst "Volgende sessie" hierboven, nu voltooid.
 
+Stap 5-8 uit "Volgende sessie" hierboven zijn inmiddels ook gedaan: Netlify-site geïmporteerd (`cute-cucurucho-9e0f4f.netlify.app`), domein `kraamzorgnadia.nl` gekoppeld via Strato DNS (A-record naar Netlify + CNAME voor `www`), Netlify Forms werkt (na een `Clear cache and deploy site` en een expliciete e-mail-notificatie onder Forms → Notifications).
+
+## Update 2026-07-28 (nog later): "unrecognized Git contributor" — repo publiek gemaakt
+
+Nadat er vanaf Sjoerds Mac een 2e en 3e commit gepusht werden (los van de initiële 15), begon elke automatische deploy te falen met **"Build failed: unrecognized Git contributor. Your plan allows only one contributor on private repos."**
+
+**Wat er speelde:** Netlify's gratis plan staat maar één herkende Git-contributor toe op een privé-repo. De allereerste build (bij het importeren van de site) werd direct vanuit Netlify's eigen dashboard getriggerd door Nadia zelf, en is daarom niet tegen deze check aangelopen. Elke ná dit moment automatisch getriggerde build (via een GitHub-push-webhook, dus elke gewone `git push`) checkt wél wie de commits maakt, en Sjoerd (een tweede, echt ander GitHub-account naast Nadia's eigen account) werd daarbij als niet-herkende 2e contributor geblokkeerd. Overstappen op pushen met Nadia's eigen Personal Access Token loste dit niet op — de commit-auteur (lokale git-config, "Sjoerd Butter Maas") bleef hetzelfde, ongeacht wiens account de push authenticeerde.
+
+**Oplossing:** de GitHub-repo `kraamzorgnadia/kraamzorgnadiawebsite` is publiek gemaakt (Settings → Danger Zone → Change visibility). Er stond niets gevoeligs in de repo (gecheckt op wachtwoorden/tokens/keys — niets gevonden), dus dit heeft geen nadeel. Dit is de blijvende oplossing zolang er met meerdere mensen aan gewerkt wordt op het gratis Netlify-plan — het alternatief was een betaalde Netlify Pro-upgrade.
+
 ## Eerstvolgende actie
 
-Verder met stap 5-8 uit "Volgende sessie" hierboven, nu op Nadia's eigen repo/account:
-
-5. **Nadia**: Netlify-account aanmaken via "Sign up with GitHub" (haar eigen account), nieuwe site importeren vanuit `kraamzorgnadia/kraamzorgnadiawebsite`.
-   - Build command: `npm run build`
-   - Publish directory: `_site`
-   - Dit staat inmiddels ook in `netlify.toml` in de repo, dus Netlify zou dit automatisch moeten oppikken — **toch even controleren** na het importeren.
-6. **Nadia/Sjoerd**: In Netlify → **Project configuration → Identity** → inschakelen. Dan **Identity → Services → Git Gateway** → inschakelen.
-7. **Nadia/Sjoerd**: **Identity → Invite users** → Nadia's eigen e-mailadres uitnodigen. Zij klikt de link, stelt een wachtwoord in, logt in op `/admin/`.
-8. **Nadia**: zodra ze een domeinnaam heeft geregistreerd → Netlify → Domain management → Add custom domain, DNS-instructies opvolgen.
-9. **Opruimen**: de test-repo `sjedde/kraamzorgtest` en bijbehorende Netlify-site (`luxury-griffin-4a4a93`) kunnen na afloop verwijderd worden.
-
-Los daarvan, geen blokkerende vervolgstap: de logo-verkenning ligt stil in afwachting van een richtingskeuze (zie hierboven), en is verder geen "open" taak totdat iemand erop terugkomt.
+Geen blokkerende vervolgstap meer. Opruimen staat nog open: de test-repo `sjedde/kraamzorgtest` en bijbehorende Netlify-site (`luxury-griffin-4a4a93`) kunnen verwijderd worden zodra iemand daaraan toekomt. Los daarvan ligt de logo-verkenning stil in afwachting van een richtingskeuze (zie hierboven) — geen "open" taak totdat iemand erop terugkomt.
