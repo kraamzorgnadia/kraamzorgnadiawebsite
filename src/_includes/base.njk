@@ -90,6 +90,19 @@
 </main>
 
 <footer class="site-footer">
+  {% if settings.footer.keurmerken and settings.footer.keurmerken.length %}
+  <div class="footer-keurmerken">
+    {% for keurmerk in settings.footer.keurmerken %}
+    {% if keurmerk.link %}
+    <a href="{{ keurmerk.link }}" target="_blank" rel="noopener noreferrer">
+      <img src="{{ keurmerk.logo }}" alt="{{ keurmerk.naam }}" loading="lazy">
+    </a>
+    {% else %}
+    <img src="{{ keurmerk.logo }}" alt="{{ keurmerk.naam }}" loading="lazy">
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
   <p>&copy; {{ currentYear }} {{ settings.site.naam_deel1 }} {{ settings.site.naam_deel2 }} — {{ settings.footer.tekst }}</p>
 </footer>
 

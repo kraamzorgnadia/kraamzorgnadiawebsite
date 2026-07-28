@@ -386,6 +386,30 @@ a { color: var(--color-accent-dark); text-decoration: none; }
   color: var(--color-text-muted);
   font-size: 0.85rem;
 }
+.footer-keurmerken {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(58, 50, 44, 0.1);
+}
+.footer-keurmerken img {
+  height: 42px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.75;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+.footer-keurmerken a:hover img,
+.footer-keurmerken a:focus-visible img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
 
 /* Responsive */
 @media (max-width: 860px) {

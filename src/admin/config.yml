@@ -98,6 +98,14 @@ collections:
             widget: "object"
             fields:
               - { label: "Tekst naast copyright", name: "tekst", widget: "string" }
+              - label: "Keurmerken / accreditaties"
+                name: "keurmerken"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Logo", name: "logo", widget: "image" }
+                  - { label: "Naam (voor alt-tekst)", name: "naam", widget: "string" }
+                  - { label: "Link (optioneel)", name: "link", widget: "string", required: false }
 
   - name: "diensten"
     label: "Diensten"
