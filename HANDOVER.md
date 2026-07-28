@@ -143,8 +143,26 @@ Nadia's echte repo bestaat al: **https://github.com/kraamzorgnadia/kraamzorgnadi
 
 Zodra een van beide geregeld is: `git remote set-url origin git@github.com:kraamzorgnadia/kraamzorgnadiawebsite.git` (of nieuwe remote toevoegen) en dan pushen — **let op: niet force-pushen**, eerst checken of Nadia's repo al commits heeft (bijv. als "Initialize repository" toch aangevinkt is bij het aanmaken) om conflicten te voorkomen.
 
+## Update 2026-07-28 (nog later): gepusht naar Nadia's eigen repo
+
+Nadia heeft `sjedde` als collaborator toegevoegd op `kraamzorgnadia/kraamzorgnadiawebsite`. Toegang bevestigd (`git ls-remote` gaf exit 0, repo was leeg — geen conflictrisico). Vervolgens:
+
+- Lokale `origin` remote aangepast naar `git@github.com:kraamzorgnadia/kraamzorgnadiawebsite.git`.
+- `git push origin main` uitgevoerd → gelukt (`* [new branch] main -> main`).
+
+**Nadia's repo staat nu op de volledige projectgeschiedenis (alle commits t/m `a7ec8fc`).** Dit is stap 3-4 uit de lijst "Volgende sessie" hierboven, nu voltooid.
+
 ## Eerstvolgende actie
 
-Wachten op: toegang tot `kraamzorgnadia/kraamzorgnadiawebsite` (collaborator of SSH-key, zie hierboven), dan pushen en verder met Identity/Git Gateway inschakelen op die repo/site. Lokale `main` staat 9 commits vóór op de test-repo (`origin/main`) — die horen niet naar de test-repo gepusht te worden, maar naar Nadia's eigen repo zodra toegang geregeld is.
+Verder met stap 5-8 uit "Volgende sessie" hierboven, nu op Nadia's eigen repo/account:
+
+5. **Nadia**: Netlify-account aanmaken via "Sign up with GitHub" (haar eigen account), nieuwe site importeren vanuit `kraamzorgnadia/kraamzorgnadiawebsite`.
+   - Build command: `npm run build`
+   - Publish directory: `_site`
+   - Dit staat inmiddels ook in `netlify.toml` in de repo, dus Netlify zou dit automatisch moeten oppikken — **toch even controleren** na het importeren.
+6. **Nadia/Sjoerd**: In Netlify → **Project configuration → Identity** → inschakelen. Dan **Identity → Services → Git Gateway** → inschakelen.
+7. **Nadia/Sjoerd**: **Identity → Invite users** → Nadia's eigen e-mailadres uitnodigen. Zij klikt de link, stelt een wachtwoord in, logt in op `/admin/`.
+8. **Nadia**: zodra ze een domeinnaam heeft geregistreerd → Netlify → Domain management → Add custom domain, DNS-instructies opvolgen.
+9. **Opruimen**: de test-repo `sjedde/kraamzorgtest` en bijbehorende Netlify-site (`luxury-griffin-4a4a93`) kunnen na afloop verwijderd worden.
 
 Los daarvan, geen blokkerende vervolgstap: de logo-verkenning ligt stil in afwachting van een richtingskeuze (zie hierboven), en is verder geen "open" taak totdat iemand erop terugkomt.
