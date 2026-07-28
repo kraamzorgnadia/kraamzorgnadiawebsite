@@ -73,7 +73,7 @@ npm install
 npm run start   # site op localhost:8080
 ```
 
-**Git**: lokale repo `main`, huidige remote `origin` wijst naar de **test-repo** `git@github.com:sjedde/kraamzorgtest.git`. Working tree clean, laatste commit `2bff2e2`.
+**Git**: lokale repo `main`, huidige remote `origin` wijst naar de **test-repo** `git@github.com:sjedde/kraamzorgtest.git`. Working tree clean, laatste commit `c6666cf`. **Let op: lokale `main` staat 9 commits vóór op `origin/main` — nog niet gepusht.** Pas pushen als expliciet gevraagd.
 
 ## SEO — al gedaan vs. nog te doen
 
@@ -97,6 +97,21 @@ npm run start   # site op localhost:8080
 - E-mailadres en telefoonnummer in `settings.yaml` → `contact:`.
 - Contactformulier gebruikt Netlify Forms (`data-netlify="true"`) — werkt automatisch zodra gehost op Netlify.
 
+## Update 2026-07-28: footer-keurmerken, stabiliteit, logo-verkenning
+
+**1. Footer: keurmerken/accreditaties (self-service via CMS)**
+Op verzoek van Sjoerd toegevoegd: een lijst-veld `footer.keurmerken` (in `src/_data/settings.yaml`, CMS-veld in `src/admin/config.yml` onder "Footer"). Per item: logo (image-upload), naam (voor alt-tekst) en optionele link. Gerenderd in `src/_includes/base.njk`, gestyled in `src/css/style.css` (`.footer-keurmerken`) — grijstinten (`grayscale`) die inkleuren bij hover/focus, dunne scheidingslijn boven de copyright-regel. **Sectie blijft volledig verborgen zolang de lijst leeg is** — er staat nu geen echt logo in, alleen de lege structuur. Nadia kan dit straks zelf vullen via `/admin/` zonder dat er ooit weer code aangepast hoeft te worden.
+
+**2. Twee stabiliteitsfixes (op expliciet verzoek: "moet vooral stabiel blijven, niet kapot gaan")**
+- `src/admin/index.html`: Decap CMS werd geladen via een open versie-range (`decap-cms@^3.0.0` vanaf unpkg-CDN) — een upstream-update kon het CMS-paneel laten breken zonder dat er in deze repo iets veranderde. Vastgezet op een exacte, geteste versie: `decap-cms@3.15.1`.
+- `netlify.toml` toegevoegd in de projectroot (`build.command = "npm run build"`, `build.publish = "_site"`). Dit was **probleem 1** uit de "Onderweg tegengekomen problemen"-lijst hierboven (Netlify raadt build-instellingen soms fout als ze alleen handmatig in het dashboard staan) — nu zit die instelling in de repo en gaat hij automatisch mee bij elke nieuwe Netlify-koppeling (dus ook bij de overzet naar Nadia's eigen account, zie hieronder).
+
+**3. CMS-preview is bewust kaal gelaten**
+Sjoerd vroeg waarom de preview in `/admin/` alleen kale tekst toont zonder site-opmaak — dat is standaard Decap-gedrag zonder `registerPreviewTemplate`/`registerPreviewStyle`. Bewust **niet** gebouwd: een custom preview is extra onderhoud (moet in sync blijven met `index.njk`/`style.css`) en een extra plek die kan breken bij een Decap-update — dat weegt niet op tegen het cosmetische voordeel, gezien de stabiliteits-prioriteit. Nadia kan gewoon opslaan en de live site checken na de automatische Netlify-build (meestal binnen een minuut).
+
+**4. Logo-verkenning — geen besluit genomen**
+Op verzoek is een eerste ronde logo-concepten geschetst (als SVG-schets in de chat, niet in de repo) voor "Kraamzorg Nadia", binnen de bestaande huisstijl (crème/terracotta/salie, Fraunces + Inter): (1) blad-icoon naast een woordmerk, (2) rond beeldmerk (blad + naam in een cirkel, geschikt als profielfoto/favicon), (3) een gekleurde icoontegel met woordmerk ernaast. Sessie is gestopt vóórdat er een richting gekozen werd ("stop maar"). **Bij hervatten: geen van de drie is verwerkt in de site** (`logo_emoji: 🌿` in `settings.yaml` staat nog gewoon op de emoji-placeholder) — eerst een richting kiezen, dan pas als SVG afmaken en verwerken (favicon, header-logo, evt. footer).
+
 ## Volgende sessie: dit op Nadia's eigen accounts zetten
 
 1. **Nadia**: GitHub-account aanmaken.
@@ -112,6 +127,24 @@ npm run start   # site op localhost:8080
 8. **Nadia**: zodra ze een domeinnaam heeft geregistreerd → Netlify → Domain management → Add custom domain, DNS-instructies opvolgen.
 9. **Opruimen**: de test-repo `sjedde/kraamzorgtest` en bijbehorende Netlify-site (`luxury-griffin-4a4a93`) kunnen na afloop verwijderd worden — waren alleen voor het testen van deze flow.
 
+## Update 2026-07-28 (later): Nadia's repo-URL is bekend, push nog geblokkeerd op auth
+
+Nadia's echte repo bestaat al: **https://github.com/kraamzorgnadia/kraamzorgnadiawebsite** (stappen 1-2 uit de lijst hierboven zijn dus gedaan). Geprobeerd te pushen vanaf Sjoerds Mac, maar dat faalt nog:
+
+- `git ls-remote` op zowel SSH (`git@github.com:kraamzorgnadia/kraamzorgnadiawebsite.git`) als HTTPS geeft **"Repository not found"** / 404.
+- Oorzaak: de lokale SSH-sleutel is bij GitHub geauthenticeerd als **`sjedde`** (Sjoerds eigen account, gebruikt voor de test-repo), en dat account heeft (nog) geen toegang tot Nadia's repo. Een 404 hier betekent typisch "bestaat niet **voor jou**" (privé-repo zonder rechten), niet per se dat de repo niet bestaat.
+
+**Nodig voordat er gepusht kan worden (stap 3 uit de lijst hierboven), één van de twee:**
+1. Nadia voegt `sjedde` toe als collaborator op `kraamzorgnadia/kraamzorgnadiawebsite` (Settings → Collaborators), of
+2. Nadia voegt Sjoerds SSH-public key toe aan haar eigen GitHub-account (Settings → SSH and GPG keys):
+   ```
+   ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG7dgGoi3TlEjjeSaQXZvorbayPNhyGo1MhfxeeRvEDh sjoerd@mac-windfarm-ais
+   ```
+
+Zodra een van beide geregeld is: `git remote set-url origin git@github.com:kraamzorgnadia/kraamzorgnadiawebsite.git` (of nieuwe remote toevoegen) en dan pushen — **let op: niet force-pushen**, eerst checken of Nadia's repo al commits heeft (bijv. als "Initialize repository" toch aangevinkt is bij het aanmaken) om conflicten te voorkomen.
+
 ## Eerstvolgende actie
 
-Wachten op: Nadia's GitHub-account + repo-URL (stappen 1-3 hierboven), dan verder met pushen naar haar repo en Identity/Git Gateway daar inschakelen.
+Wachten op: toegang tot `kraamzorgnadia/kraamzorgnadiawebsite` (collaborator of SSH-key, zie hierboven), dan pushen en verder met Identity/Git Gateway inschakelen op die repo/site. Lokale `main` staat 9 commits vóór op de test-repo (`origin/main`) — die horen niet naar de test-repo gepusht te worden, maar naar Nadia's eigen repo zodra toegang geregeld is.
+
+Los daarvan, geen blokkerende vervolgstap: de logo-verkenning ligt stil in afwachting van een richtingskeuze (zie hierboven), en is verder geen "open" taak totdat iemand erop terugkomt.
