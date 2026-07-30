@@ -162,6 +162,14 @@ Nadat er vanaf Sjoerds Mac een 2e en 3e commit gepusht werden (los van de initi�
 
 **Oplossing:** de GitHub-repo `kraamzorgnadia/kraamzorgnadiawebsite` is publiek gemaakt (Settings → Danger Zone → Change visibility). Er stond niets gevoeligs in de repo (gecheckt op wachtwoorden/tokens/keys — niets gevonden), dus dit heeft geen nadeel. Dit is de blijvende oplossing zolang er met meerdere mensen aan gewerkt wordt op het gratis Netlify-plan — het alternatief was een betaalde Netlify Pro-upgrade.
 
+## Update 2026-07-30: Editorial Workflow (concept opslaan vóór publiceren)
+
+Op verzoek toegevoegd: `publish_mode: editorial_workflow` in `src/admin/config.yml`. Dit is een **ingebouwde** Decap CMS-modus, geen custom code — dus zelfde stabiliteitsprofiel als de rest van de CMS-opzet (net als de gepinde `decap-cms@3.15.1`).
+
+**Wat dit verandert voor Nadia:** in plaats van dat elke "Opslaan" direct naar `main` commit en live gaat, krijgt ze nu een workflow-scherm met concepten in drie kolommen (Concepten / Klaar voor review / Klaar om te publiceren) en een aparte "Publiceren"-knop. Ze kan dus tussentijds opslaan zonder dat de wijziging al zichtbaar is op de live site, en pas publiceren als de tekst echt af is.
+
+Build getest (`npm run build`) — `config.yml` wordt correct meegekopieerd naar `_site/admin/`, geen fouten. Nog niet gepusht naar Nadia's repo (`kraamzorgnadia/kraamzorgnadiawebsite`) — pas doen na expliciete vraag.
+
 ## Eerstvolgende actie
 
-Geen blokkerende vervolgstap meer. Opruimen staat nog open: de test-repo `sjedde/kraamzorgtest` en bijbehorende Netlify-site (`luxury-griffin-4a4a93`) kunnen verwijderd worden zodra iemand daaraan toekomt. Los daarvan ligt de logo-verkenning stil in afwachting van een richtingskeuze (zie hierboven) — geen "open" taak totdat iemand erop terugkomt.
+Wijziging in `src/admin/config.yml` (editorial workflow) staat lokaal klaar maar is nog niet gepusht. Verder geen blokkerende vervolgstap. Opruimen staat nog open: de test-repo `sjedde/kraamzorgtest` en bijbehorende Netlify-site (`luxury-griffin-4a4a93`) kunnen verwijderd worden zodra iemand daaraan toekomt. Los daarvan ligt de logo-verkenning stil in afwachting van een richtingskeuze (zie hierboven) — geen "open" taak totdat iemand erop terugkomt.
