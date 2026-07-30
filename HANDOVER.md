@@ -170,6 +170,12 @@ Op verzoek toegevoegd: `publish_mode: editorial_workflow` in `src/admin/config.y
 
 Build getest (`npm run build`) — `config.yml` wordt correct meegekopieerd naar `_site/admin/`, geen fouten. Nog niet gepusht naar Nadia's repo (`kraamzorgnadia/kraamzorgnadiawebsite`) — pas doen na expliciete vraag.
 
+## Update 2026-07-30 (later): honeypot-spambescherming contactformulier
+
+Toegevoegd aan het contactformulier in `src/index.njk`: `data-netlify-honeypot="bot-field"` op het `<form>`-element plus een verborgen `bot-field`-input (verstopt via een nieuwe `.hidden { display: none; }`-class in `src/css/style.css`). Pure HTML/CSS, geen JavaScript, geen externe dienst (geen reCAPTCHA) — Netlify Forms negeert stilletjes elke inzending waarbij dit veld wél is ingevuld (spambots vullen doorgaans alle velden in, mensen zien het veld nooit). Zelfde stabiliteitsprofiel als de rest van de site: niets dat kan verouderen of een API-key nodig heeft.
+
+Getest lokaal (`npm run start` + browserpreview): honeypot-veld zit in de DOM, is onzichtbaar (`display: none`, niet in tab-volgorde relevant), en het formulier ziet er visueel ongewijzigd uit.
+
 ## Eerstvolgende actie
 
-Wijziging in `src/admin/config.yml` (editorial workflow) staat lokaal klaar maar is nog niet gepusht. Verder geen blokkerende vervolgstap. Opruimen staat nog open: de test-repo `sjedde/kraamzorgtest` en bijbehorende Netlify-site (`luxury-griffin-4a4a93`) kunnen verwijderd worden zodra iemand daaraan toekomt. Los daarvan ligt de logo-verkenning stil in afwachting van een richtingskeuze (zie hierboven) — geen "open" taak totdat iemand erop terugkomt.
+De honeypot-toevoeging staat lokaal klaar maar is nog niet gepusht. Verder geen blokkerende vervolgstap. Opruimen staat nog open: de test-repo `sjedde/kraamzorgtest` en bijbehorende Netlify-site (`luxury-griffin-4a4a93`) kunnen verwijderd worden zodra iemand daaraan toekomt. Los daarvan ligt de logo-verkenning stil in afwachting van een richtingskeuze (zie hierboven) — geen "open" taak totdat iemand erop terugkomt.

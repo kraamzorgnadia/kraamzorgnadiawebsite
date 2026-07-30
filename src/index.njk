@@ -122,8 +122,11 @@ layout: base.njk
     <h2 class="center">{{ settings.contact.heading }}</h2>
     <p class="center contact-lead">{{ settings.contact.lead }}</p>
 
-    <form class="contact-form" name="contact" method="POST" data-netlify="true">
+    <form class="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="contact">
+      <p class="hidden">
+        <label>Niet invullen indien mens: <input name="bot-field"></label>
+      </p>
       <div class="form-row">
         <label for="naam">Naam</label>
         <input type="text" id="naam" name="naam" required>

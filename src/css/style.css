@@ -54,6 +54,7 @@ a { color: var(--color-accent-dark); text-decoration: none; }
 }
 .eyebrow.center { text-align: center; }
 .center { text-align: center; }
+.hidden { display: none; }
 
 /* Header / Nav */
 .site-header {
